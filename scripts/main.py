@@ -8,8 +8,11 @@ class GetAR(scripts.Script):
     txt2img_h_slider = None
 
     def __init__(self):
-        pass  # Инициализация не требуется
+        pass
 
+    def on_image_clear(self):
+        return None, None, ""
+    
     def title(self):
         return "Adjust Width"
 
@@ -46,17 +49,13 @@ class GetAR(scripts.Script):
             outputs=[self.txt2img_w_slider, self.txt2img_h_slider]  # Обновляем два слайдера
         )
 
+        image_drop.clear(self.on_image_clear, inputs=[], outputs=[input_real_w, input_real_h, calc_aspect])
+
         image_drop.change(self.image_dropped, inputs=[image_drop], outputs=[input_real_w, input_real_h, calc_aspect])
         return [image_drop, input_real_w, input_real_h, calc_aspect, input_calc_w, input_calc_h, but_set_size]
 
     def ar_set_size(self, real_width, real_height):
-        try:
-            real_width = float(real_width) if real_width else None
-            real_height = float(real_height) if real_height else None
-        except ValueError:
-            print("Invalid input for width or height")
-            return None, None
-            # Теперь функция устанавливает размеры как для ширины, так и для высоты
+        # Теперь функция устанавливает размеры как для ширины, так и для высоты
         if real_width is not None and real_width > 0:
             print(f"Setting width to {real_width}")
         else:
