@@ -19,7 +19,7 @@ class GetAR(scripts.Script):
         with gr.Accordion(label="GetAR", open=True):
             with gr.Row(elem_id="txt2img_get_ar"):
                 with gr.Column():
-                    image_drop = gr.Image(label="Upload your image", width=200, elem_id="getar_image_drop")
+                    image_drop = gr.Image(label="Upload your image", width=200, height=200, elem_id="getar_image_drop")
                 with gr.Column():
                     with gr.Row():
                         input_real_w = gr.Number(label="Real Width", value=None, elem_id="ar_input_real_w",  style={'width': 'auto'})

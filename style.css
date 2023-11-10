@@ -31,8 +31,8 @@
 }
 
 #txt2img_get_ar .form   {
-  flex-grow: 0 !important; 
-  flex-shrink: 0 !important; 
+  /* flex-grow: 0 !important; 
+  flex-shrink: 0 !important;  */
   width: 100%;
   justify-content: space-between;
 }
@@ -40,7 +40,7 @@
 #txt2img_get_ar .gradio-number   {
   position: relative;
   display: inline-block;
-  width: 2em !important;
+  /* width: 2em !important; */
   min-width: min(5em, 100%) !important;
   overflow: visible !important;
 }
