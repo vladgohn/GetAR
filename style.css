@@ -18,8 +18,8 @@
 }
 
 #txt2img_get_ar .gradio-column:first-child {
-  width: 150px !important;
-  max-width: 150px !important;
+  width: 200px !important;
+  max-width: 200px !important;
   border-radius: 6px;
   border: 1px solid var(--block-border-color);
   background-color: #000;
@@ -27,7 +27,7 @@
 
 
 #txt2img_get_ar .gradio-row {
-  max-width: 240px !important; 
+  /* max-width: 240px !important;  */
 }
 
 #txt2img_get_ar .form   {
@@ -74,9 +74,5 @@
 #txt2img_get_ar .my-button, #but_set_size, #but_set_calc {
   display: inline-block;
   border-radius: 8px;
-  margin-top: 4px;
-}
-
-#txt2img_get_ar #but_set_size {
   margin-top: 1em;
 }

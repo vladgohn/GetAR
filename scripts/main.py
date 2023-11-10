@@ -2,7 +2,7 @@ import gradio as gr
 import modules.scripts as scripts
 from modules import script_callbacks
 
-class SetWidthScript(scripts.Script):
+class GetAR(scripts.Script):
     # Статический атрибут для слайдера ширины
     txt2img_w_slider = None
     txt2img_h_slider = None
@@ -14,22 +14,21 @@ class SetWidthScript(scripts.Script):
         return "Adjust Width"
 
     def show(self, is_img2img):
-        return scripts.AlwaysVisible  # Показывать всегда
-    
+        return scripts.AlwaysVisible 
     def ui(self, is_img2img):
-        # Ваш интерфейс для загрузки изображений и настройки размеров
-        with gr.Box():
+        with gr.Accordion(label="GetAR", open=True):
             with gr.Row(elem_id="txt2img_get_ar"):
                 with gr.Column():
-                    image_drop = gr.Image(label="Upload your image", width=150, height=150, elem_id="getar_image_drop")
+                    image_drop = gr.Image(label="Upload your image", width=200, elem_id="getar_image_drop")
                 with gr.Column():
                     with gr.Row():
-                        input_real_w = gr.Number(label="Real Width", value=None, elem_id="ar_input_real_w", style={'width': '4em'})
-                        input_real_h = gr.Number(label="Real Height", value=None, elem_id="ar_input_real_h", style={'width': '4em'})
-                        calc_aspect = gr.Text(label="Aspect Ratio", value="", elem_id="ar_calc_aspect", style={'width': '4em'})
+                        input_real_w = gr.Number(label="Real Width", value=None, elem_id="ar_input_real_w",  style={'width': 'auto'})
+                        input_real_h = gr.Number(label="Real Height", value=None, elem_id="ar_input_real_h", style={'width': 'auto'})
                     with gr.Row():
-                        input_calc_w = gr.Number(label="Calc Width", value=None, elem_id="input_calc_w", style={'width': '4em'})
-                        input_calc_h = gr.Number(label="Calc Height", value=None, elem_id="input_calc_h", style={'width': '4em'})
+                        calc_aspect = gr.Text(label="Aspect Ratio", value="", elem_id="ar_calc_aspect",  style={'width': 'auto'})
+                    with gr.Row():
+                        input_calc_w = gr.Number(label="Calc Width", value=None, elem_id="input_calc_w", style={'width': 'auto'})
+                        input_calc_h = gr.Number(label="Calc Height", value=None, elem_id="input_calc_h", style={'width': 'auto'})
                     with gr.Row():
                         but_set_size = gr.Button("Set Size", css_class="my-button", elem_id="but_set_size")
                         but_set_calc = gr.Button("Set calc", css_class="my-button", elem_id="but_set_calc")
@@ -86,9 +85,9 @@ class SetWidthScript(scripts.Script):
         # Теперь мы сохраняем ссылки на оба слайдера: ширины и высоты
         elem_id = getattr(component, "elem_id", None)
         if elem_id == "txt2img_width":
-            SetWidthScript.txt2img_w_slider = component
+            GetAR.txt2img_w_slider = component
         elif elem_id == "txt2img_height":
-            SetWidthScript.txt2img_h_slider = component
+            GetAR.txt2img_h_slider = component
 
 # Регистрация методов on_after_component
-script_callbacks.on_after_component(SetWidthScript.on_after_component)
+script_callbacks.on_after_component(GetAR.on_after_component)

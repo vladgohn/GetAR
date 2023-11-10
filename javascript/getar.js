@@ -47,8 +47,5 @@ function setupEventListeners() {
   }
 }
 
-// document.querySelector('#input_calc_w input').value = "";
-// document.querySelector('#input_calc_h input').value = "";
-
 // Периодическая проверка наличия элементов и установка обработчиков событий
 const checkExistInterval = setInterval(setupEventListeners, 500);
