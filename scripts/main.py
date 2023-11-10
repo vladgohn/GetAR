@@ -50,7 +50,13 @@ class GetAR(scripts.Script):
         return [image_drop, input_real_w, input_real_h, calc_aspect, input_calc_w, input_calc_h, but_set_size]
 
     def ar_set_size(self, real_width, real_height):
-        # Теперь функция устанавливает размеры как для ширины, так и для высоты
+        try:
+            real_width = float(real_width) if real_width else None
+            real_height = float(real_height) if real_height else None
+        except ValueError:
+            print("Invalid input for width or height")
+            return None, None
+            # Теперь функция устанавливает размеры как для ширины, так и для высоты
         if real_width is not None and real_width > 0:
             print(f"Setting width to {real_width}")
         else:
@@ -78,7 +84,8 @@ class GetAR(scripts.Script):
             print(f"Image dropped with width: {width}, height: {height}, aspect ratio: {aspect_ratio}")  # Вывод в консоль
             return width, height, aspect_ratio
         else:
-            return "", "", ""
+            # Возвращаем None или другое значение по умолчанию для каждого выходного параметра
+            return None, None, None
 
     @staticmethod
     def on_after_component(component, **_kwargs):
