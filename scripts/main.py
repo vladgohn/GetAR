@@ -34,7 +34,7 @@ class GetAR(scripts.Script):
                         input_calc_h = gr.Number(label="Calc Height", value=None, elem_id="input_calc_h", style={'width': 'auto'})
                     with gr.Row():
                         but_set_size = gr.Button("Set Size", css_class="my-button", elem_id="but_set_size")
-                        but_set_calc = gr.Button("Set calc", css_class="my-button", elem_id="but_set_calc")
+                        but_set_calc = gr.Button("Set Сalc", css_class="my-button", elem_id="but_set_calc")
 
         # Настройка обработчика клика для кнопки 'but_set_size'
         but_set_size.click(
