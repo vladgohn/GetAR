@@ -19,6 +19,9 @@ function updateHeight() {
     if (!isNaN(width)) {
       const height = Math.round(width / aspectRatio);
       heightOutput.value = height;
+
+      // Искусственно вызываем событие 'input', чтобы Gradio зарегистрировал изменение
+      heightOutput.dispatchEvent(new Event('input', { bubbles: true }));
     }
   }
 }
@@ -32,9 +35,13 @@ function updateWidth() {
     if (!isNaN(height)) {
       const width = Math.round(height * aspectRatio);
       widthOutput.value = width;
+
+      // Искусственно вызываем событие 'input', чтобы Gradio зарегистрировал изменение
+      widthOutput.dispatchEvent(new Event('input', { bubbles: true }));
     }
   }
 }
+
 
 // Функция для установки обработчиков событий
 function setupEventListeners() {
