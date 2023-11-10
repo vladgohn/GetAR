@@ -3,7 +3,6 @@ import modules.scripts as scripts
 from modules import script_callbacks
 
 class GetAR(scripts.Script):
-    # Статический атрибут для слайдера ширины
     txt2img_w_slider = None
     txt2img_h_slider = None
 
@@ -36,7 +35,6 @@ class GetAR(scripts.Script):
                         but_set_size = gr.Button("Set Size", css_class="my-button", elem_id="but_set_size")
                         but_set_calc = gr.Button("Set Сalc", css_class="my-button", elem_id="but_set_calc")
 
-        # Настройка обработчика клика для кнопки 'but_set_size'
         but_set_size.click(
             self.ar_set_size,
             inputs=[input_real_w, input_real_h],  # Теперь мы передаем два значения
@@ -46,7 +44,7 @@ class GetAR(scripts.Script):
         but_set_calc.click(
             self.ar_set_size,  # Используем ту же функцию ar_set_size
             inputs=[input_calc_w, input_calc_h],  # Передаем значения из input_calc_w и input_calc_h
-            outputs=[self.txt2img_w_slider, self.txt2img_h_slider]  # Обновляем два слайдера
+            outputs=[self.txt2img_w_slider, self.txt2img_h_slider]
         )
 
         image_drop.clear(self.on_image_clear, inputs=[], outputs=[input_real_w, input_real_h, calc_aspect])
@@ -55,7 +53,6 @@ class GetAR(scripts.Script):
         return [image_drop, input_real_w, input_real_h, calc_aspect, input_calc_w, input_calc_h, but_set_size]
 
     def ar_set_size(self, real_width, real_height):
-        # Теперь функция устанавливает размеры как для ширины, так и для высоты
         if real_width is not None and real_width > 0:
             print(f"Setting width to {real_width}")
         else:
@@ -83,17 +80,13 @@ class GetAR(scripts.Script):
             print(f"Image dropped with width: {width}, height: {height}, aspect ratio: {aspect_ratio}")  # Вывод в консоль
             return width, height, aspect_ratio
         else:
-            # Возвращаем None или другое значение по умолчанию для каждого выходного параметра
             return None, None, None
 
     @staticmethod
     def on_after_component(component, **_kwargs):
-        # Теперь мы сохраняем ссылки на оба слайдера: ширины и высоты
         elem_id = getattr(component, "elem_id", None)
         if elem_id == "txt2img_width":
             GetAR.txt2img_w_slider = component
         elif elem_id == "txt2img_height":
             GetAR.txt2img_h_slider = component
-
-# Регистрация методов on_after_component
 script_callbacks.on_after_component(GetAR.on_after_component)
