@@ -12,7 +12,7 @@ function getAspectRatio() {
 let isProgrammaticChange = false;
 
 function updateHeight() {
-  if (isProgrammaticChange) return; // Предотвращаем рекурсивный вызов
+  if (isProgrammaticChange) return;
 
   const aspectRatio = getAspectRatio();
   if (aspectRatio) {
@@ -22,7 +22,7 @@ function updateHeight() {
     if (!isNaN(width)) {
       const height = Math.round(width / aspectRatio);
 
-      isProgrammaticChange = true; // Устанавливаем флаг перед программным изменением
+      isProgrammaticChange = true; 
       heightOutput.value = height;
       heightOutput.dispatchEvent(new Event('input', { bubbles: true }));
       isProgrammaticChange = false; // Сбрасываем флаг после изменения
@@ -31,7 +31,7 @@ function updateHeight() {
 }
 
 function updateWidth() {
-  if (isProgrammaticChange) return; // Предотвращаем рекурсивный вызов
+  if (isProgrammaticChange) return;
 
   const aspectRatio = getAspectRatio();
   if (aspectRatio) {
@@ -41,14 +41,13 @@ function updateWidth() {
     if (!isNaN(height)) {
       const width = Math.round(height * aspectRatio);
 
-      isProgrammaticChange = true; // Устанавливаем флаг перед программным изменением
+      isProgrammaticChange = true;
       widthOutput.value = width;
       widthOutput.dispatchEvent(new Event('input', { bubbles: true }));
       isProgrammaticChange = false; // Сбрасываем флаг после изменения
     }
   }
 }
-
 
 function setupEventListeners() {
   const widthInputElement = document.querySelector('#input_calc_w input');
