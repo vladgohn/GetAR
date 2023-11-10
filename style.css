@@ -1,0 +1,82 @@
+#txt2img_get_ar {
+  /* display: flex !important; 
+  flex-direction: row !important; */
+  /* border: 1px solid var(--block-border-color); */
+  margin: 0.5em auto;
+  display: grid !important;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+  position: relative;
+}
+
+#txt2img_get_ar * {
+  /* flex: 0; */
+}
+
+
+#txt2img_get_ar .gradio-column {
+}
+
+#txt2img_get_ar .gradio-column:first-child {
+  width: 150px !important;
+  max-width: 150px !important;
+  border-radius: 6px;
+  border: 1px solid var(--block-border-color);
+  background-color: #000;
+}
+
+
+#txt2img_get_ar .gradio-row {
+  max-width: 240px !important; 
+}
+
+#txt2img_get_ar .form   {
+  flex-grow: 0 !important; 
+  flex-shrink: 0 !important; 
+  width: 100%;
+  justify-content: space-between;
+}
+
+#txt2img_get_ar .gradio-number   {
+  position: relative;
+  display: inline-block;
+  width: 2em !important;
+  min-width: min(5em, 100%) !important;
+  overflow: visible !important;
+}
+
+#txt2img_get_ar .gradio-number .container {
+  width: 2em !important; 
+}
+
+#txt2img_get_ar input, #txt2img_get_ar textarea  {
+  padding: 0 0.1em !important;
+  padding-left: 0.5em !important;
+}
+
+#txt2img_get_ar .gradio-textbox {
+  position: relative;
+  min-width: min(5em, 100%) !important;
+}
+
+#txt2img_get_ar textarea  {
+  height: 1.6em !important;
+}
+
+#txt2img_get_ar .svelte-1gfkn6j {
+  font-size: 0.7em;
+}
+
+#txt2img_get_ar #getar_image_drop .svelte-1ck5uk8,  #txt2img_get_ar #getar_image_drop .svelte-1mwvhlq {
+  /* display: none !important; */
+}
+
+#txt2img_get_ar .my-button, #but_set_size, #but_set_calc {
+  display: inline-block;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+#txt2img_get_ar #but_set_size {
+  margin-top: 1em;
+}
